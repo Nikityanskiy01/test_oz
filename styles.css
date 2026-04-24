@@ -1,0 +1,178 @@
+:root {
+  --bg: #cfd4d8;
+  --panel: #f6f8fa;
+  --text: #222222;
+  --blue: #1e63e9;
+  --track: #e2e7ec;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+}
+
+.app {
+  width: min(92vw, 568px);
+  background: var(--panel);
+  padding: 16px 14px;
+}
+
+.title {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.progress-area {
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.ring-track,
+.ring-value {
+  fill: none;
+  stroke-width: 10;
+}
+
+.ring-track {
+  stroke: var(--track);
+}
+
+.ring-value {
+  stroke: var(--blue);
+  stroke-linecap: butt;
+  transition: stroke-dashoffset 0.2s linear;
+}
+
+.controls {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.value-input {
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #9399a0;
+  background: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  outline: none;
+}
+
+.value-input:focus {
+  border-color: var(--blue);
+}
+
+.value-input::-webkit-outer-spin-button,
+.value-input::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+.toggle {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  display: inline-block;
+}
+
+.toggle input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #dfe3e7;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-slider::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.toggle input:checked + .toggle-slider {
+  background: var(--blue);
+}
+
+.toggle input:checked + .toggle-slider::after {
+  transform: translateX(16px);
+}
+
+.is-hidden {
+  visibility: hidden;
+}
+
+.is-animated .progress-ring {
+  animation: spin 1.4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(270deg);
+  }
+}
+
+@media (orientation: landscape) {
+  .app {
+    width: min(92vw, 620px);
+    padding: 14px 16px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .progress-area {
+    min-height: 170px;
+  }
+}

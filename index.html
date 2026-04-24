@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Block</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1 class="title">Progress</h1>
+
+      <section class="layout">
+        <div class="progress-area" id="progressBlock">
+          <svg
+            class="progress-ring"
+            width="140"
+            height="140"
+            viewBox="0 0 140 140"
+            role="img"
+            aria-label="Индикатор прогресса"
+          >
+            <circle class="ring-track" cx="70" cy="70" r="52"></circle>
+            <circle class="ring-value" cx="70" cy="70" r="52"></circle>
+          </svg>
+        </div>
+
+        <form class="controls" onsubmit="return false;">
+          <label class="control-row" for="valueInput">
+            <input
+              id="valueInput"
+              class="value-input"
+              type="number"
+              min="0"
+              max="100"
+              step="1"
+              value="60"
+            />
+            <span>Value</span>
+          </label>
+
+          <label class="control-row toggle-row" for="animateInput">
+            <span class="toggle">
+              <input id="animateInput" type="checkbox" />
+              <span class="toggle-slider"></span>
+            </span>
+            <span>Animate</span>
+          </label>
+
+          <label class="control-row toggle-row" for="hideInput">
+            <span class="toggle">
+              <input id="hideInput" type="checkbox" />
+              <span class="toggle-slider"></span>
+            </span>
+            <span>Hide</span>
+          </label>
+        </form>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

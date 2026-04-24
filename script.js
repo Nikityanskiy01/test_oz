@@ -49,6 +49,8 @@
   });
 
   progressApi.setValue(valueInput.value);
+  progressApi.setAnimated(animateInput.checked);
+  progressApi.setHidden(hideInput.checked);
 
   window.progressApi = progressApi;
 })();
